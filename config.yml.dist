@@ -1,0 +1,20 @@
+config:
+     motion_detector_pin_number: 4
+     pic_temp_dir: /home/pi/pintruder/temp/
+     camera:
+        num_shots_per_take: 5
+        resolution_horizontal: 1280
+        resolution_vertical: 720
+        framerate: 30
+        iso: 600
+     net:
+        email:
+            destination_email: john.doe@gmail.com
+            source_email: john.doe@gmail.com
+            smtp:
+                use_tls: true
+                use_login: true
+                hostname: smtp.gmail.com
+                port: 587
+                login: john.doe@gmail.com
+                password: changeme
