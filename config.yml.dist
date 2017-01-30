@@ -5,6 +5,7 @@ config:
         send_to_file: true
         log_path: /home/pi/scripts/pintruder/log/pintruder.log
      motion_detector_pin_number: 4
+     gpio_main_led_pin_number: 5
      pic_temp_dir: /home/pi/pintruder/temp/
      camera:
         num_shots_per_take: 5

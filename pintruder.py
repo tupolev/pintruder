@@ -7,6 +7,7 @@ import logging
 from Camera import Camera
 from NetHandler import NetHandler
 from Logger import Logger
+from Led import Led
 
 
 class Pintruder:
@@ -20,7 +21,10 @@ class Pintruder:
         self.motion_detector_pin_number = self.config['motion_detector_pin_number']
         self.debug_enabled = self.config['debug']
         self.logger = Logger(self.config, logging)
+        self.led = Led(self.config['gpio_main_led_pin_number'], self.logger)
+        self.led.on()
         self.cam = Camera(self.config, self.logger)
+        self.led.off()
         self.net = NetHandler(self.config['net'], self.logger)
         self.destination_email = self.config['net']['email']['destination_email']
 
@@ -51,7 +55,9 @@ class Pintruder:
         while True:
             try:
                 if pir.motion_detected and not self.cam.lock_camera:
+                    self.led.on()
                     self.shoot()
+                    self.led.off()
                     self.send_pics()
                     self.clean()
             except (KeyboardInterrupt, SystemExit):
