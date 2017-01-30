@@ -1,4 +1,9 @@
 config:
+     debug:
+        enabled: true
+        send_to_screen: true
+        send_to_file: true
+        log_path: /home/pi/scripts/pintruder/log/pintruder.log
      motion_detector_pin_number: 4
      pic_temp_dir: /home/pi/pintruder/temp/
      camera:
